@@ -1,0 +1,61 @@
+
+valor = 0
+saque = 0
+extrato = valor
+n_saques = 3
+limite_saque = 500
+
+
+while True:
+  menu = f"""
+  =================== menu ===================
+  Voce deseja  realizar qual dessas tarefa?
+  [d] depositar
+  [s] sacar
+  [e] Extrato
+  [c] checar quantos saque me restam
+  [Sair] Sair 
+
+  ===================     ====================\n
+"""
+  opcao = input(menu)
+        
+  if opcao == "d" :
+        valor_deposito = float(input("digite o valor de deposito:"))
+        valor+= valor_deposito
+        
+        print(f"""Você depositou {valor_deposito:.3f} muito obrigado pela preferencia\n
+              Volte Sempre!""")
+        
+  elif opcao == "s" :
+      if n_saques != 0:
+        valor_saque = float(input("digite o valor de saque:"))
+        saque = valor_saque 
+      
+        if saque <= valor and saque <= limite_saque:
+          valor -= saque
+          n_saques -= 1     
+          print(f"Você sacou {saque:.3f} seu saldo agora é de {valor:.3f}")
+            
+        else:
+          if saque > valor or saque > limite_saque:
+            print(f"limite exedido ou saldo insuficiente cheque na opção extrato para verificar o saldo ou se seu limite de saque diario de {limite_saque}R$ foi excedido ligue para o banco pelo mumero de telefone atrás de seu cartão")
+         
+      else:
+        print(f"Seu limite de saque diario exedeu por hoje volte amanhã ou se seu{n_saques} zerou e precisa com urgencia fale com nosco através do numero de telefone atás de seu cartão!")
+        
+
+
+  elif opcao == "e":
+        print(f"Seu saldo é de {valor:.3f}")
+    
+  elif opcao == "c":
+        print(f"pode sacar até {n_saques}")
+        if n_saques == 0 :
+          print("Desculpe mas seu limite de saque chegou a 0")
+    
+  elif opcao.lower() == "sair":
+              print("Obrigado volte sempre!")
+              break
+  else:
+        print("Digite uma opção valida!")
